@@ -1,28 +1,76 @@
 import Foundation
 
-// Observable object used to store and manage orders
+// Stores and manages all coffee orders
 class OrderStore: ObservableObject {
 
-    // Published array updates the UI automatically
+    // Published orders automatically update UI
     @Published var orders: [Order] = [
 
         Order(
             name: "Amanda",
-            drink: "Double Double",
+            drink: "Coffee",
             size: "Medium",
             notes: "2 sugars"
         ),
 
         Order(
-            name: "Nigel",
+            name: "Lisa",
+            drink: "Latte",
+            size: "Small",
+            notes: "Oat milk"
+        ),
+
+        Order(
+            name: "Jenny",
+            drink: "Tea",
+            size: "Medium",
+            notes: "1 sugar"
+        ),
+
+        Order(
+            name: "Mark",
+            drink: "Mocha",
+            size: "Large",
+            notes: "Whipped cream"
+        ),
+
+        Order(
+            name: "Sarah",
+            drink: "Iced Coffee",
+            size: "Large",
+            notes: "No ice"
+        ),
+
+        Order(
+            name: "Daniel",
             drink: "French Vanilla",
             size: "Large",
-            notes: "Extra hot"
+            notes: "3 sugars"
         )
     ]
 
-    // Function to add a new order
+    // Add new order
     func addOrder(order: Order) {
+
         orders.append(order)
+    }
+
+    // Delete cancelled order
+    func deleteOrder(at offsets: IndexSet) {
+
+        orders.remove(atOffsets: offsets)
+    }
+
+    // Get last 3 customer orders
+    func recentOrders(for name: String) -> [Order] {
+
+        let filteredOrders = orders.filter {
+
+            $0.name.lowercased()
+            ==
+            name.lowercased()
+        }
+
+        return Array(filteredOrders.suffix(3))
     }
 }

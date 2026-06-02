@@ -1,6 +1,6 @@
 import Foundation
 
-// Model for storing a coffee order
+// Model for coffee order
 struct Order: Identifiable {
 
     let id = UUID()
@@ -9,4 +9,7 @@ struct Order: Identifiable {
     var drink: String
     var size: String
     var notes: String
+
+    // Save order date
+    var date: Date = Date()
 }

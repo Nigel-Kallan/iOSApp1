@@ -1,11 +1,19 @@
 import SwiftUI
 
+// Main Home Screen
 struct ContentView: View {
 
+    // Creates and stores all coffee orders
     @StateObject var store = OrderStore()
 
-    let timRed = Color(red: 0.75, green: 0.0, blue: 0.0)
+    // Tim Hortons theme color - Red
+    let timRed = Color(
+        red: 0.75,
+        green: 0.0,
+        blue: 0.0
+    )
 
+    // Tim Hortons theme color - Brown
     let timBrown = Color(
         red: 0.35,
         green: 0.20,
@@ -14,55 +22,69 @@ struct ContentView: View {
 
     var body: some View {
 
-        NavigationView {
+        // Navigation container for the app
+        NavigationStack {
 
             ZStack {
 
+                // Background gradient
                 LinearGradient(
-                    colors: [timBrown.opacity(0.4), .white],
+                    colors: [
+                        timBrown.opacity(0.3),
+                        .white
+                    ],
                     startPoint: .top,
                     endPoint: .bottom
                 )
                 .ignoresSafeArea()
 
-                VStack {
+                VStack(spacing: 25) {
 
+                    Spacer()
+
+                    // App title displayed on home page
                     Text("☕ Tim Hortons Coffee Run")
                         .font(.largeTitle)
                         .fontWeight(.bold)
                         .foregroundColor(timRed)
-                        .padding(.top)
+                        .multilineTextAlignment(.center)
 
+                    // Displays today's date
+                    Text(
+                        Date.now.formatted(
+                            date: .complete,
+                            time: .omitted
+                        )
+                    )
+                    .font(.headline)
+                    .foregroundColor(timBrown)
+
+                    // Coffee cup icon
                     Image(systemName: "cup.and.saucer.fill")
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 100)
+                        .frame(width: 90)
                         .foregroundColor(timBrown)
 
-                    List {
+                    Spacer()
 
-                        ForEach(store.orders) { order in
+                    // Navigation button to view all saved orders
+                    NavigationLink {
 
-                            VStack(
-                                alignment: .leading,
-                                spacing: 8
-                            ) {
+                        OrdersView(store: store)
 
-                                Text(order.name)
-                                    .font(.headline)
-                                    .foregroundColor(timRed)
+                    } label: {
 
-                                Text("\(order.size) \(order.drink)")
-                                    .foregroundColor(timBrown)
-
-                                Text(order.notes)
-                                    .font(.caption)
-                                    .foregroundColor(.gray)
-                            }
+                        Text("View Today's Orders")
+                            .fontWeight(.bold)
+                            .frame(maxWidth: .infinity)
                             .padding()
-                        }
+                            .background(timRed)
+                            .foregroundColor(.white)
+                            .cornerRadius(15)
                     }
 
+                    // Navigation button to add a new order
                     NavigationLink {
 
                         AddOrderView(store: store)
@@ -73,17 +95,38 @@ struct ContentView: View {
                             .fontWeight(.bold)
                             .frame(maxWidth: .infinity)
                             .padding()
-                            .background(timRed)
+                            .background(timBrown)
                             .foregroundColor(.white)
-                            .cornerRadius(12)
+                            .cornerRadius(15)
                     }
-                    .padding()
+
+                    // Navigation button to open coffee run timer
+                    NavigationLink {
+
+                        TimerView()
+
+                    } label: {
+
+                        Text("Open Coffee Run Timer")
+                            .fontWeight(.bold)
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .background(.black)
+                            .foregroundColor(.white)
+                            .cornerRadius(15)
+                    }
+                    .padding(.bottom)
                 }
+                .padding()
             }
+
+            // Navigation bar title
+            .navigationTitle("Home")
         }
     }
 }
 
+// Preview provider for Xcode Canvas
 #Preview {
     ContentView()
 }
