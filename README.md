@@ -6,6 +6,16 @@
 A SwiftUI iOS application inspired by daily team coffee runs at Tim Hortons.  
 This app allows team members to save and manage coffee orders instead of writing them down on paper.
 
+<img width="1206" height="2622" alt="HOME_ Screenshot - Tims - 2026-06-01 at 23 02 16" src="https://github.com/user-attachments/assets/f7ee3f1a-85ca-45be-97a5-987a6ea3049f" />
+
+<img width="1206" height="2622" alt="ORDERS_Screenshot - Tims - 2026-06-01 at 23 05 09" src="https://github.com/user-attachments/assets/0cf0727b-1ccc-471f-8d88-e8563deedfa6" />
+
+<img width="1206" height="2622" alt=" ADD_ORDER_Screenshot - Tims - 2026-06-01 at 23 05 43" src="https://github.com/user-attachments/assets/0f6b9c27-a0b8-4a3a-86a4-cd9b2205006d" />
+
+<img width="1206" height="2622" alt=" ORDERS_EDIT_Screenshot - Tims - 2026-06-01 at 23 06 01" src="https://github.com/user-attachments/assets/5f5ad4cb-fab8-49b6-975c-ee3e3431f137" />
+
+<img width="1206" height="2622" alt=" TIMER_Screenshot - Tims - 2026-06-01 at 23 07 10" src="https://github.com/user-attachments/assets/b29dd8c7-79a5-4aa4-88ed-b78e673b69e4" />
+
 ---
 
 # 📱 Features
